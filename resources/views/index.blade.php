@@ -6,6 +6,9 @@
             @if (Session::has('notification'))
                 <div class="alert alert-success">
                     {{ Session::get('notification') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
             @endif
             <div>
@@ -45,8 +48,8 @@
                             <td>{{ $ac->phone_number }}</td>
                             <td>{{ $ac->role }}</td>
                             <td>
-                                <form action="{{ route('account.destroy',$ac->id) }}" method="POST">
-                                    <a href="{{ route('account.edit',$ac->id) }}" class="btn btn-info">Edit</a>
+                                <form action="{{ route('account.destroy', $ac->id) }}" method="POST">
+                                    <a href="{{ route('account.edit', $ac->id) }}" class="btn btn-info">Edit</a>
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Delete</button>
